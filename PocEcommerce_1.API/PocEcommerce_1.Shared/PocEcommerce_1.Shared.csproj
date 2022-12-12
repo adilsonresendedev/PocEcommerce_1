@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="MappingProfiles\" />
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <ProjectReference Include="..\PocEcommerce_1.DTOs\PocEcommerce_1.DTOs.csproj" />
+    <ProjectReference Include="..\PocEcommerce_1.ViewModels\PocEcommerce_1.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

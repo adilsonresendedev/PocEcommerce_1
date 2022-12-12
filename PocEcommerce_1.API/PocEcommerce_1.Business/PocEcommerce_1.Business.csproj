@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PocEcommerce_1.DTOs\PocEcommerce_1.DTOs.csproj" />
+  </ItemGroup>
+
 </Project>

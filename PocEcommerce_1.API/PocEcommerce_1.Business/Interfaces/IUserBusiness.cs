@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PocEcommerce_1.DTOs;
 
 namespace PocEcommerce_1.Business.Interfaces
 {
-    internal interface IUserBusiness
+    public interface IUserBusiness
     {
+        Task<UserDTO> GetByEmail(string email);
+
+        Task<int> Insert(UserDTO userDTO);
+
+        Task<UserDTO> Update(UserDTO userDTO);
     }
 }
