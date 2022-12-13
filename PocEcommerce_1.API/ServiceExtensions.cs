@@ -10,5 +10,20 @@ namespace PocEcommerce_1.API
             services.AddScoped<IAuthService, AuthSevice>();
             return services;
         }
+
+        public static IServiceCollection AddBusiness(this IServiceCollection services)
+        {
+            return services;
+        }
+
+        public static IServiceCollection AddRepository(this IServiceCollection services)
+        {
+            return services;
+        }
+
+        public static IServiceCollection AddDatabase(this IServiceCollection services)
+        {
+            return services;
+        }
     }
 }

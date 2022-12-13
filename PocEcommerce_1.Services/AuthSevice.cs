@@ -26,19 +26,19 @@ namespace PocEcommerce_1.Services
             _mapper = mapper;
         }
 
-        public async Task<ServiceResponseDTO<string>> Login(UserToInsertViewModel userToInsertViewModel)
+        public async Task<ServiceResponseDTO<string>> Login(UserLoginViewModel userLoginViewModel)
         {
             ServiceResponseDTO<string> serviceResponseDTO = new ServiceResponseDTO<string>();
             try
             {
-                UserDTO userOnDatabase = await _userBusiness.GetByEmail(userToInsertViewModel.Email);
+                UserDTO userOnDatabase = await _userBusiness.GetByEmail(userLoginViewModel.Email);
                 if (userOnDatabase.Id == 0)
                 {
                     serviceResponseDTO.IsSucess = false;
                     serviceResponseDTO.Message = ConstantMessages.UserNotFound;
                     return serviceResponseDTO;
                 }
-                else if (!PasswordHashUtility.CheckHash(userToInsertViewModel.Password, userOnDatabase.PasswordHash, userOnDatabase.PasswordSalt))
+                else if (!PasswordHashUtility.CheckHash(userLoginViewModel.Password, userOnDatabase.PasswordHash, userOnDatabase.PasswordSalt))
                 {
                     serviceResponseDTO.IsSucess = false;
                     serviceResponseDTO.Message = ConstantMessages.UserNotFound;
@@ -57,9 +57,9 @@ namespace PocEcommerce_1.Services
             return serviceResponseDTO;
         }
 
-        public async Task<ServiceResponseDTO<UserViewModel>> Register(UserToInsertViewModel userToInsertViewModel)
+        public async Task<ServiceResponseDTO<UserLoginViewModel>> Register(UserToInsertViewModel userToInsertViewModel)
         {
-            ServiceResponseDTO<UserViewModel> serviceResponseDTO = new ServiceResponseDTO<UserViewModel>();
+            ServiceResponseDTO<UserLoginViewModel> serviceResponseDTO = new ServiceResponseDTO<UserLoginViewModel>();
             try
             {
                 UserDTO userOnDatabase = await _userBusiness.GetByEmail(userToInsertViewModel.Email);
@@ -72,7 +72,7 @@ namespace PocEcommerce_1.Services
                
                 UserDTO userDTO = _mapper.Map<UserDTO>(userToInsertViewModel);
                 userDTO.Id = await _userBusiness.Insert(userDTO);
-                serviceResponseDTO.Data = _mapper.Map<UserViewModel>(userDTO);
+                serviceResponseDTO.Data = _mapper.Map<UserLoginViewModel>(userDTO);
             }
             catch (Exception ex)
             {
