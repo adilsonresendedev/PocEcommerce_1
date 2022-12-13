@@ -1,5 +1,4 @@
-﻿using Entities;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PocEcommerce_1.Entities
 {
