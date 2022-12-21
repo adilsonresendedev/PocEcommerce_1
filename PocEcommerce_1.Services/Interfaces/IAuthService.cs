@@ -5,8 +5,8 @@ namespace PocEcommerce_1.Services.Interfaces
 {
     public interface IAuthService
     {
-        public Task<ServiceResponseDTO<UserLoginViewModel>> Register(UserToInsertViewModel userToInsertViewModel);
+        public Task<ServiceResponseViewModel<UserViewModel>> Register(UserToInsertViewModel userToInsertViewModel);
 
-        public Task<ServiceResponseDTO<string>> Login(UserLoginViewModel userLoginViewModel);
+        public Task<ServiceResponseViewModel<string>> Login(UserViewModel userLoginViewModel);
     }
 }

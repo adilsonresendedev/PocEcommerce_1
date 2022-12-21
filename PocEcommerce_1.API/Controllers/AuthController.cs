@@ -20,14 +20,14 @@ namespace PocEcommerce_1.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] UserToInsertViewModel userToInsertViewModel)
         {
-            ServiceResponseDTO<UserLoginViewModel> serviceResponseDTO = await _authService.Register(userToInsertViewModel);
+            ServiceResponseViewModel<UserViewModel> serviceResponseDTO = await _authService.Register(userToInsertViewModel);
             return Ok(serviceResponseDTO);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Login([FromQuery] UserLoginViewModel userLoginViewModel)
+        public async Task<IActionResult> Login([FromQuery] UserViewModel userLoginViewModel)
         {
-            ServiceResponseDTO<string> serviceResponseDTO = await _authService.Login(userLoginViewModel);
+            ServiceResponseViewModel<string> serviceResponseDTO = await _authService.Login(userLoginViewModel);
             return Ok(serviceResponseDTO);
         }
     }

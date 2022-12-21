@@ -1,6 +1,6 @@
-﻿namespace PocEcommerce_1.DTOs
+﻿namespace PocEcommerce_1.ViewModels
 {
-    public class PaginationDTO
+    public class PaginationViewModel
     {
         public int Page { get; set; } = 1;
         public int PageCount { get; set; }

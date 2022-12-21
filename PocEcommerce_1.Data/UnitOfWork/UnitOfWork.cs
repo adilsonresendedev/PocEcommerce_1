@@ -16,7 +16,7 @@ namespace PocEcommerce_1.Data.UnitOfWork
             await _appDbContext.Database.CommitTransactionAsync();   
         }
 
-        public async Task Rollback()
+        public async Task RollbackAscync()
         {
             await _appDbContext.Database.RollbackTransactionAsync();
         }

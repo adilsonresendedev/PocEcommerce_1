@@ -14,7 +14,7 @@ namespace PocEcommerce_1.API.Controllers
         [Route(nameof(Insert))]
         public async Task<IActionResult> Insert([FromBody] ProdutctToInsertViewModel produtctToInsertViewModel)
         {
-            ServiceResponseDTO<ProductViewModel> serviceResponseDTO = new ServiceResponseDTO<ProductViewModel>();
+            ServiceResponseViewModel<ProductViewModel> serviceResponseDTO = new ServiceResponseViewModel<ProductViewModel>();
             return Ok(serviceResponseDTO);
         }
 
@@ -23,7 +23,7 @@ namespace PocEcommerce_1.API.Controllers
         [Route(nameof(Update))]
         public async Task<IActionResult> Update([FromBody] ProductViewModel productViewModel)
         {
-            ServiceResponseDTO<ProductViewModel> serviceResponseDTO = new ServiceResponseDTO<ProductViewModel>();
+            ServiceResponseViewModel<ProductViewModel> serviceResponseDTO = new ServiceResponseViewModel<ProductViewModel>();
             return Ok(serviceResponseDTO);
         }
 
@@ -31,7 +31,7 @@ namespace PocEcommerce_1.API.Controllers
         [Route(nameof(GetAll))]
         public async Task<IActionResult> GetAll([FromQuery] ProductFilter productFilter)
         {
-            ServiceResponseDTO<ProductViewModel> serviceResponseDTO = new ServiceResponseDTO<ProductViewModel>();
+            ServiceResponseViewModel<ProductViewModel> serviceResponseDTO = new ServiceResponseViewModel<ProductViewModel>();
             return Ok(serviceResponseDTO);
         }
 
@@ -39,7 +39,7 @@ namespace PocEcommerce_1.API.Controllers
         [Route(nameof(GetById) + "/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            ServiceResponseDTO<ProductViewModel> serviceResponseDTO = new ServiceResponseDTO<ProductViewModel>();
+            ServiceResponseViewModel<ProductViewModel> serviceResponseDTO = new ServiceResponseViewModel<ProductViewModel>();
             return Ok(serviceResponseDTO);
         }
 
@@ -47,7 +47,7 @@ namespace PocEcommerce_1.API.Controllers
         [Route(nameof(Delete))]
         public async Task<IActionResult> Delete([FromQuery] ProductFilter productFilter)
         {
-            ServiceResponseDTO<ProductViewModel> serviceResponseDTO = new ServiceResponseDTO<ProductViewModel>();
+            ServiceResponseViewModel<ProductViewModel> serviceResponseDTO = new ServiceResponseViewModel<ProductViewModel>();
             return Ok(serviceResponseDTO);
         }
     }

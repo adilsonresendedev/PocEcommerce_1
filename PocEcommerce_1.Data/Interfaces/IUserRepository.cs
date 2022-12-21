@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PocEcommerce_1.Entities;
 
 namespace PocEcommerce_1.Data.Interfaces
 {
-    internal interface IUserRepository
+    public interface IUserRepository
     {
+        Task<int> Insert(User user);
+
+        Task<User> Update(User user);
+
+        Task<User> GetByEmail(string email);
     }
 }

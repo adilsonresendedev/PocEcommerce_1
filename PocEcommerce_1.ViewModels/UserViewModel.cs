@@ -1,6 +1,6 @@
 ﻿namespace PocEcommerce_1.ViewModels
 {
-    public class UserLoginViewModel : BaseViewModel
+    public class UserViewModel : BaseViewModel
     {
         public string FirstName { get; set; } = default!;
         public string LastName { get; set; } = default!;

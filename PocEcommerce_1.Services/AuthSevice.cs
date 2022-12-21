@@ -26,9 +26,9 @@ namespace PocEcommerce_1.Services
             _mapper = mapper;
         }
 
-        public async Task<ServiceResponseDTO<string>> Login(UserLoginViewModel userLoginViewModel)
+        public async Task<ServiceResponseViewModel<string>> Login(UserViewModel userLoginViewModel)
         {
-            ServiceResponseDTO<string> serviceResponseDTO = new ServiceResponseDTO<string>();
+            ServiceResponseViewModel<string> serviceResponseDTO = new ServiceResponseViewModel<string>();
             try
             {
                 UserDTO userOnDatabase = await _userBusiness.GetByEmail(userLoginViewModel.Email);
@@ -57,9 +57,9 @@ namespace PocEcommerce_1.Services
             return serviceResponseDTO;
         }
 
-        public async Task<ServiceResponseDTO<UserLoginViewModel>> Register(UserToInsertViewModel userToInsertViewModel)
+        public async Task<ServiceResponseViewModel<UserViewModel>> Register(UserToInsertViewModel userToInsertViewModel)
         {
-            ServiceResponseDTO<UserLoginViewModel> serviceResponseDTO = new ServiceResponseDTO<UserLoginViewModel>();
+            ServiceResponseViewModel<UserViewModel> serviceResponseDTO = new ServiceResponseViewModel<UserViewModel>();
             try
             {
                 UserDTO userOnDatabase = await _userBusiness.GetByEmail(userToInsertViewModel.Email);
@@ -72,7 +72,7 @@ namespace PocEcommerce_1.Services
                
                 UserDTO userDTO = _mapper.Map<UserDTO>(userToInsertViewModel);
                 userDTO.Id = await _userBusiness.Insert(userDTO);
-                serviceResponseDTO.Data = _mapper.Map<UserLoginViewModel>(userDTO);
+                serviceResponseDTO.Data = _mapper.Map<UserViewModel>(userDTO);
             }
             catch (Exception ex)
             {

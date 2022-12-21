@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PocEcommerce_1.Business.Interfaces;
 
 namespace PocEcommerce_1.Business
 {
-    public class ProductBusiness
+    public class ProductBusiness : IProductBusiness
     {
     }
 }

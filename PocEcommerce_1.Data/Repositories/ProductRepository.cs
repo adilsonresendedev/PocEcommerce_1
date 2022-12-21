@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PocEcommerce_1.Data.Repositories
 {
-    internal class ProductRepository
+    public class ProductRepository
     {
     }
 }

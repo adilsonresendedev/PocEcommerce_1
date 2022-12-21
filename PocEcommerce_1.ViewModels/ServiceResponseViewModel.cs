@@ -1,6 +1,6 @@
-﻿namespace PocEcommerce_1.DTOs
+﻿namespace PocEcommerce_1.ViewModels
 {
-    public class ServiceResponseDTO<T>
+    public class ServiceResponseViewModel<T>
     {
         public T Data { get; set;  } = default!;
         public PaginationDTO pagination { get; set; } = default!;

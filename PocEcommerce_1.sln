@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocEcommerce_1.API", "PocEcommerce_1.API\PocEcommerce_1.API.csproj", "{73FE82E8-3A39-4ACA-8697-FF72EEDC3F84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocEcommerce_1.API", "PocEcommerce_1.API\PocEcommerce_1.API.csproj", "{73FE82E8-3A39-4ACA-8697-FF72EEDC3F84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocEcommerce_1.Entities", "Entities\PocEcommerce_1.Entities.csproj", "{41EBAD5C-984D-4568-8C07-4BC0444FC926}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocEcommerce_1.Business", "PocEcommerce_1.Business\PocEcommerce_1.Business.csproj", "{83FFD0EA-151B-4E16-816A-4D11FAB4F23B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocEcommerce_1.Data", "Data\PocEcommerce_1.Data.csproj", "{13E46160-2568-421B-BC80-53E5B34AE1C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocEcommerce_1.Services", "PocEcommerce_1.Services\PocEcommerce_1.Services.csproj", "{C0F6CCFD-48C2-483C-90A5-EF8BAA49713B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocEcommerce_1.Business", "PocEcommerce_1.Business\PocEcommerce_1.Business.csproj", "{83FFD0EA-151B-4E16-816A-4D11FAB4F23B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocEcommerce_1.ViewModels", "PocEcommerce_1.ViewModels\PocEcommerce_1.ViewModels.csproj", "{4A1A2B43-4A07-4598-B195-C6DBAED94B6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocEcommerce_1.Services", "PocEcommerce_1.Services\PocEcommerce_1.Services.csproj", "{C0F6CCFD-48C2-483C-90A5-EF8BAA49713B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocEcommerce_1.Shared", "PocEcommerce_1.Shared\PocEcommerce_1.Shared.csproj", "{E6EC72F4-3803-43E1-9A46-5B040D9223E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocEcommerce_1.ViewModels", "PocEcommerce_1.ViewModels\PocEcommerce_1.ViewModels.csproj", "{4A1A2B43-4A07-4598-B195-C6DBAED94B6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocEcommerce_1.DTOs", "PocEcommerce_1.DTOs\PocEcommerce_1.DTOs.csproj", "{D11E6C5F-9F79-4201-A6FB-E01D15A6AF92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocEcommerce_1.Shared", "PocEcommerce_1.Shared\PocEcommerce_1.Shared.csproj", "{E6EC72F4-3803-43E1-9A46-5B040D9223E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocEcommerce_1.Data", "PocEcommerce_1.Data\PocEcommerce_1.Data.csproj", "{C96FE994-27B1-4A23-89D7-A653BB723060}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocEcommerce_1.DTOs", "PocEcommerce_1.DTOs\PocEcommerce_1.DTOs.csproj", "{D11E6C5F-9F79-4201-A6FB-E01D15A6AF92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PocEcommerce_1.Entities", "PocEcommerce_1.Entities\PocEcommerce_1.Entities.csproj", "{7A5BB17C-5A91-4268-9B86-F98A37C486A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +29,6 @@ Global
 		{73FE82E8-3A39-4ACA-8697-FF72EEDC3F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73FE82E8-3A39-4ACA-8697-FF72EEDC3F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73FE82E8-3A39-4ACA-8697-FF72EEDC3F84}.Release|Any CPU.Build.0 = Release|Any CPU
-		{41EBAD5C-984D-4568-8C07-4BC0444FC926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{41EBAD5C-984D-4568-8C07-4BC0444FC926}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{41EBAD5C-984D-4568-8C07-4BC0444FC926}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{41EBAD5C-984D-4568-8C07-4BC0444FC926}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13E46160-2568-421B-BC80-53E5B34AE1C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13E46160-2568-421B-BC80-53E5B34AE1C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13E46160-2568-421B-BC80-53E5B34AE1C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13E46160-2568-421B-BC80-53E5B34AE1C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{83FFD0EA-151B-4E16-816A-4D11FAB4F23B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{83FFD0EA-151B-4E16-816A-4D11FAB4F23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83FFD0EA-151B-4E16-816A-4D11FAB4F23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +49,14 @@ Global
 		{D11E6C5F-9F79-4201-A6FB-E01D15A6AF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D11E6C5F-9F79-4201-A6FB-E01D15A6AF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D11E6C5F-9F79-4201-A6FB-E01D15A6AF92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C96FE994-27B1-4A23-89D7-A653BB723060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C96FE994-27B1-4A23-89D7-A653BB723060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C96FE994-27B1-4A23-89D7-A653BB723060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C96FE994-27B1-4A23-89D7-A653BB723060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A5BB17C-5A91-4268-9B86-F98A37C486A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5BB17C-5A91-4268-9B86-F98A37C486A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A5BB17C-5A91-4268-9B86-F98A37C486A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A5BB17C-5A91-4268-9B86-F98A37C486A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,6 +4,6 @@
     {
         Task CommitAsync();
         Task SaveChangesAsync();
-        Task Rollback();
+        Task RollbackAscync();
     }
 }

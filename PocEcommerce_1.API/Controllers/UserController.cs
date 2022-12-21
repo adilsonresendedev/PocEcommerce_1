@@ -11,9 +11,9 @@ namespace PocEcommerce_1.API.Controllers
     {
         [HttpPut]
         [Route(nameof(Update))]
-        public async Task<IActionResult> Update([FromBody] UserLoginViewModel userViewModel)
+        public async Task<IActionResult> Update([FromBody] UserViewModel userViewModel)
         { 
-            ServiceResponseDTO<UserLoginViewModel> serviceResponseDTO = new ServiceResponseDTO<UserLoginViewModel>();
+            ServiceResponseViewModel<UserViewModel> serviceResponseDTO = new ServiceResponseViewModel<UserViewModel>();
             return Ok(serviceResponseDTO);
         }
 
@@ -21,7 +21,7 @@ namespace PocEcommerce_1.API.Controllers
         [Route(nameof(Delete) + "/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            ServiceResponseDTO<UserLoginViewModel> serviceResponseDTO = new ServiceResponseDTO<UserLoginViewModel>();
+            ServiceResponseViewModel<UserViewModel> serviceResponseDTO = new ServiceResponseViewModel<UserViewModel>();
             return Ok(serviceResponseDTO);
         }
     }
