@@ -11,7 +11,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddServices();
 builder.Services.AddBusiness();
 builder.Services.AddRepository();
-builder.Services.AddDatabase();
+builder.Services.AddDatabase(builder.Configuration);
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 

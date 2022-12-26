@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PocEcommerce_1.Data\PocEcommerce_1.Data.csproj" />
     <ProjectReference Include="..\PocEcommerce_1.DTOs\PocEcommerce_1.DTOs.csproj" />
+    <ProjectReference Include="..\PocEcommerce_1.Shared\PocEcommerce_1.Shared.csproj" />
   </ItemGroup>
 
 </Project>

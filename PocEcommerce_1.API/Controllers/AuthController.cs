@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using PocEcommerce_1.DTOs;
+﻿using Microsoft.AspNetCore.Mvc;
 using PocEcommerce_1.Services.Interfaces;
-using PocEcommerce_1.Shared.Filters;
 using PocEcommerce_1.ViewModels;
 
 namespace PocEcommerce_1.API.Controllers

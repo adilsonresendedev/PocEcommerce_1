@@ -23,11 +23,11 @@ namespace PocEcommerce_1.Business
             return userDTO;
         }
 
-        public async Task<UserDTO> Insert(UserDTO userDTO)
+        public async Task<int> Insert(UserDTO userDTO)
         {
             User user = _mapper.Map<User>(userDTO);
-            userDTO.Id = await _userRepository.Insert(user);
-            return userDTO;
+            int id = await _userRepository.Insert(user);
+            return id;
         }
 
         public async Task<UserDTO> Update(UserDTO userDTO)

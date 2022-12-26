@@ -6,7 +6,7 @@ namespace PocEcommerce_1.Business.Interfaces
     {
         Task<UserDTO> GetByEmail(string email);
 
-        Task<UserDTO> Insert(UserDTO userDTO);
+        Task<int> Insert(UserDTO userDTO);
 
         Task<UserDTO> Update(UserDTO userDTO);
     }

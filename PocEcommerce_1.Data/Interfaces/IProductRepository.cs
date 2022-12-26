@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PocEcommerce_1.Entities;
+using PocEcommerce_1.Shared.Filters;
 
 namespace PocEcommerce_1.Data.Interfaces
 {
-    internal interface IProductRepository
+    public interface IProductRepository
     {
+        Task<Product> getById(int id);
+        Task<List<Product>> GetAll(ProductFilter productFilter);
+        Task<Product> Update(Product product);
+        Task<Product> Insert(Product product);
     }
 }

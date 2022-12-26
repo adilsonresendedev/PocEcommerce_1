@@ -69,8 +69,11 @@ namespace PocEcommerce_1.Services
                     serviceResponseDTO.Message = ConstantMessages.UserAlreadyExists;
                     return serviceResponseDTO;
                 }
-               
+
                 UserDTO userDTO = _mapper.Map<UserDTO>(userToInsertViewModel);
+                PasswordHashUtility.CreateHash(userToInsertViewModel.Password, out byte[] passwordHash, out byte[] passwordSalt);
+                userDTO.PasswordHash = passwordHash;
+                userDTO.PasswordSalt = passwordSalt;
                 userDTO.Id = await _userBusiness.Insert(userDTO);
                 serviceResponseDTO.Data = _mapper.Map<UserViewModel>(userDTO);
             }

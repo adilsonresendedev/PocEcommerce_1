@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PocEcommerce_1.Data.Interfaces
 {
-    internal interface IShoppingCartRepository
+    public interface IShoppingCartRepository
     {
     }
 }

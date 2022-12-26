@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,5 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PocEcommerce_1.Entities\PocEcommerce_1.Entities.csproj" />
+    <ProjectReference Include="..\PocEcommerce_1.Shared\PocEcommerce_1.Shared.csproj" />
   </ItemGroup>
 </Project>
