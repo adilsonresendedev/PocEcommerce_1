@@ -44,7 +44,7 @@ namespace PocEcommerce_1.API.Controllers
         }
 
         [HttpGet]
-        [Route(nameof(GetById) + "/{id}")]
+        [Route(nameof(GetById) + "/{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
             ServiceResponseViewModel<ProductViewModel> serviceResponseViewModel = await _productService.GetById(id);
@@ -52,7 +52,7 @@ namespace PocEcommerce_1.API.Controllers
         }
 
         [HttpDelete]
-        [Route(nameof(Delete) + "/{id}")]
+        [Route(nameof(Delete) + "/{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
             ServiceResponseViewModel<ProductViewModel> serviceResponseViewModel = await _productService.Delete(id);

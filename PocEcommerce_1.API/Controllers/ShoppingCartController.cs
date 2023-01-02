@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PocEcommerce_1.Services.Interfaces;
+using PocEcommerce_1.Shared.Filters;
+using PocEcommerce_1.ViewModels;
 
 namespace PocEcommerce_1.API.Controllers
 {
@@ -7,5 +10,44 @@ namespace PocEcommerce_1.API.Controllers
     [ApiController]
     public class ShoppingCartController : ControllerBase
     {
+        private IShoppingCartService _shoppingCartService;
+
+        public ShoppingCartController( IShoppingCartService shoppingCartService)
+        {
+            _shoppingCartService = shoppingCartService;
+        }
+
+        [HttpPost]
+        [Route(nameof(Insert))]
+        public async Task<IActionResult> Insert([FromBody] ShoppingCartToInsertViewModel shoppingCartToInsertViewModel)
+        {
+            ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = await _shoppingCartService.Insert(shoppingCartToInsertViewModel);
+            return Ok(serviceResponseViewModel);
+        }
+
+        [HttpGet]
+        [Route(nameof(GetAll))]
+        public async Task<IActionResult> GetAll([FromQuery] ShoppingCartFilter shoppingCartFilter)
+        {
+            ServiceResponseViewModel<List<ShoppingCartViewModel>> serviceResponseViewModel = await _shoppingCartService.GetAll(shoppingCartFilter);
+            return Ok(serviceResponseViewModel);
+        }
+
+        [HttpGet]
+        [Route(nameof(GetById) + "/{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = await _shoppingCartService.GetById(id);
+            return Ok(serviceResponseViewModel);
+        }
+
+        [HttpDelete]
+        [Route(nameof(GetById) + "/{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = await _shoppingCartService.Delete(id);
+            return Ok(serviceResponseViewModel);
+        }
+
     }
 }
