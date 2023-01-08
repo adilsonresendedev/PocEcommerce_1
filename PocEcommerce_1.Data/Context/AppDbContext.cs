@@ -10,8 +10,15 @@ namespace PocEcommerce_1.Data.Context
             
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        }
+
         public List<User> Users { get; set; } = default!;
-        public List<ShoppingCart> ShoppingCarts { get; set; } = default!;
-        public List<Product> Products { get; set; } = default!; 
+        public List<Order> ShoppingCarts { get; set; } = default!;
+        public List<Course> Products { get; set; } = default!; 
+        public List<OrderCourse> shoppingCartProducts { get; set; } = default!;
     }
 }

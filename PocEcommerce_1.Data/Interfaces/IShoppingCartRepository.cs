@@ -5,9 +5,9 @@ namespace PocEcommerce_1.Data.Interfaces
 {
     public interface IShoppingCartRepository
     {
-        Task<bool> Update(ShoppingCart shoppingCart);
-        Task<List<ShoppingCart>> GetAll(ShoppingCartFilter shoppingCartFilter);
-        Task<ShoppingCart> GetById(int id);
-        Task<int> Insert(ShoppingCart shoppingCart);
+        Task<bool> Update(Order shoppingCart);
+        Task<List<Order>> GetAll(ShoppingCartFilter shoppingCartFilter);
+        Task<Order> GetById(int id);
+        Task<int> Insert(Order shoppingCart);
     }
 }

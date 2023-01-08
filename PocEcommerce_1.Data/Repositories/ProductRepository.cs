@@ -15,39 +15,39 @@ namespace PocEcommerce_1.Data.Repositories
             _appDbContext = appDbContext;
         }
 
-        public async Task<List<Product>> GetAll(ProductFilter productFilter)
+        public async Task<List<Course>> GetAll(CourseFilter productFilter)
         {
-            IQueryable<Product> product = _appDbContext.Set<Product>()
+            IQueryable<Course> product = _appDbContext.Set<Course>()
                 .Where(x => productFilter.Id != 0 ? x.Id == productFilter.Id : true)
                 .Where(x => !string.IsNullOrWhiteSpace(productFilter.Description) ? x.Description.Contains(productFilter.Description) : true)
                 .Skip(productFilter.Skip)
                 .Take(productFilter.PageSize);
 
-            List<Product> _product = await product
+            List<Course> _product = await product
                 .AsNoTracking()
                 .ToListAsync();
 
             return _product;
         }
 
-        public async Task<Product> getById(int id)
+        public async Task<Course> getById(int id)
         {
-            Product product = await _appDbContext.Set<Product>()
+            Course product = await _appDbContext.Set<Course>()
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == id);
             return product;
         }
 
-        public async Task<Product> Insert(Product product)
+        public async Task<Course> Insert(Course product)
         {
-            await _appDbContext.Set<Product>().AddAsync(product);
+            await _appDbContext.Set<Course>().AddAsync(product);
             await _appDbContext.SaveChangesAsync();
             return product;
         }
 
-        public async Task<Product> Update(Product product)
+        public async Task<Course> Update(Course product)
         {
-            _appDbContext.Set<Product>().Update(product);
+            _appDbContext.Set<Course>().Update(product);
             await _appDbContext.SaveChangesAsync();
             return product;
         }

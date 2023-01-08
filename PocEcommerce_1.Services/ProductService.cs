@@ -9,7 +9,7 @@ using PocEcommerce_1.ViewModels;
 
 namespace PocEcommerce_1.Services
 {
-    public class ProductService : IProductService
+    public class ProductService : ICoursetService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IProductBusiness _productBusiness;
@@ -22,18 +22,18 @@ namespace PocEcommerce_1.Services
             _mapper = mapper;
         }
 
-        public async Task<ServiceResponseViewModel<ProductViewModel>> Delete(int id)
+        public async Task<ServiceResponseViewModel<CourseViewModel>> Delete(int id)
         {
-            ServiceResponseViewModel<ProductViewModel> serviceResponseViewModel = new ServiceResponseViewModel<ProductViewModel>();
+            ServiceResponseViewModel<CourseViewModel> serviceResponseViewModel = new ServiceResponseViewModel<CourseViewModel>();
             try
             {
-                ProductDTO productDTO = await _productBusiness.GetById(id);
+                CourseDTO productDTO = await _productBusiness.GetById(id);
                 if (productDTO != null)
                 {
                     await _productBusiness.Delete(id);
                 }
 
-                ProductViewModel productViewModel = _mapper.Map<ProductViewModel>(productDTO);
+                CourseViewModel productViewModel = _mapper.Map<CourseViewModel>(productDTO);
                 serviceResponseViewModel.Data = productViewModel;
                 await _unitOfWork.CommitAsync();
             }
@@ -47,13 +47,13 @@ namespace PocEcommerce_1.Services
             return serviceResponseViewModel;
         }
 
-        public async Task<ServiceResponseViewModel<List<ProductViewModel>>> GetAll(ProductFilter productFilter)
+        public async Task<ServiceResponseViewModel<List<CourseViewModel>>> GetAll(CourseFilter productFilter)
         {
-            ServiceResponseViewModel<List<ProductViewModel>> serviceResponseViewModel = new ServiceResponseViewModel<List<ProductViewModel>>();
+            ServiceResponseViewModel<List<CourseViewModel>> serviceResponseViewModel = new ServiceResponseViewModel<List<CourseViewModel>>();
             try
             {
-                List<ProductDTO> productDTO = await _productBusiness.GetAll(productFilter);
-                List<ProductViewModel> productViewModel = _mapper.Map<List<ProductViewModel>>(productDTO);
+                List<CourseDTO> productDTO = await _productBusiness.GetAll(productFilter);
+                List<CourseViewModel> productViewModel = _mapper.Map<List<CourseViewModel>>(productDTO);
                 serviceResponseViewModel.Data = productViewModel;
             }
             catch (Exception ex)
@@ -65,13 +65,13 @@ namespace PocEcommerce_1.Services
             return serviceResponseViewModel;
         }
 
-        public async Task<ServiceResponseViewModel<ProductViewModel>> GetById(int id)
+        public async Task<ServiceResponseViewModel<CourseViewModel>> GetById(int id)
         {
-            ServiceResponseViewModel<ProductViewModel> serviceResponseViewModel = new ServiceResponseViewModel<ProductViewModel>();
+            ServiceResponseViewModel<CourseViewModel> serviceResponseViewModel = new ServiceResponseViewModel<CourseViewModel>();
             try
             {
-                ProductDTO productDTO = await _productBusiness.GetById(id);
-                ProductViewModel productViewModel = _mapper.Map<ProductViewModel>(productDTO);
+                CourseDTO productDTO = await _productBusiness.GetById(id);
+                CourseViewModel productViewModel = _mapper.Map<CourseViewModel>(productDTO);
                 serviceResponseViewModel.Data = productViewModel;
             }
             catch (Exception ex)
@@ -83,14 +83,14 @@ namespace PocEcommerce_1.Services
             return serviceResponseViewModel;
         }
 
-        public async Task<ServiceResponseViewModel<ProductViewModel>> Insert(ProductToInsertViewModel productToInsertViewModel)
+        public async Task<ServiceResponseViewModel<CourseViewModel>> Insert(CourseToInsertViewModel productToInsertViewModel)
         {
-            ServiceResponseViewModel<ProductViewModel> serviceResponseViewModel = new ServiceResponseViewModel<ProductViewModel>();
+            ServiceResponseViewModel<CourseViewModel> serviceResponseViewModel = new ServiceResponseViewModel<CourseViewModel>();
             try
             {
-                ProductDTO productDTO = _mapper.Map<ProductDTO>(productToInsertViewModel);
+                CourseDTO productDTO = _mapper.Map<CourseDTO>(productToInsertViewModel);
                 productDTO.Id = await _productBusiness.Insert(productDTO);
-                ProductViewModel productViewModel = _mapper.Map<ProductViewModel>(productDTO);
+                CourseViewModel productViewModel = _mapper.Map<CourseViewModel>(productDTO);
                 serviceResponseViewModel.Data = productViewModel;
                 await _unitOfWork.CommitAsync();
             }
@@ -104,12 +104,12 @@ namespace PocEcommerce_1.Services
             return serviceResponseViewModel;
         }
 
-        public async Task<ServiceResponseViewModel<ProductViewModel>> Update(ProductViewModel productViewModel)
+        public async Task<ServiceResponseViewModel<CourseViewModel>> Update(CourseViewModel productViewModel)
         {
-            ServiceResponseViewModel<ProductViewModel> serviceResponseViewModel = new ServiceResponseViewModel<ProductViewModel>();
+            ServiceResponseViewModel<CourseViewModel> serviceResponseViewModel = new ServiceResponseViewModel<CourseViewModel>();
             try
             {
-                ProductDTO productDTO = _mapper.Map<ProductDTO>(productViewModel);
+                CourseDTO productDTO = _mapper.Map<CourseDTO>(productViewModel);
                 bool result = await _productBusiness.Update(productDTO);
                 if (!result)
                 {
@@ -117,7 +117,7 @@ namespace PocEcommerce_1.Services
                     return serviceResponseViewModel;
                 }
 
-                ProductViewModel productViewModelDatabase = _mapper.Map<ProductViewModel>(productDTO);
+                CourseViewModel productViewModelDatabase = _mapper.Map<CourseViewModel>(productDTO);
                 serviceResponseViewModel.Data = productViewModelDatabase;
                 await _unitOfWork.SaveChangesAsync();
             }

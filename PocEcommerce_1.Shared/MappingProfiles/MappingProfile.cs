@@ -15,17 +15,17 @@ namespace PocEcommerce_1.Shared.MappingProfiles
 
             CreateMap<UserDTO, User>().ReverseMap();
 
-            CreateMap<ProductToInsertViewModel, ProductDTO>().ReverseMap();
+            CreateMap<CourseToInsertViewModel, CourseDTO>().ReverseMap();
 
-            CreateMap<ProductViewModel, ProductDTO>().ReverseMap();
+            CreateMap<CourseViewModel, CourseDTO>().ReverseMap();
 
-            CreateMap<ProductDTO, Product>().ReverseMap();
+            CreateMap<CourseDTO, Course>().ReverseMap();
 
             CreateMap<ShoppingCartToInsertViewModel, ShoppingCartDTO>().ReverseMap();
 
             CreateMap<ShoppingCartViewModel, ShoppingCartDTO>().ReverseMap();
 
-            CreateMap<ShoppingCartDTO, ShoppingCart>().ReverseMap();
+            CreateMap<ShoppingCartDTO, Order>().ReverseMap();
         }
     }
 }

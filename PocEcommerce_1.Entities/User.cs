@@ -8,6 +8,6 @@
         public string Email { get; set; } = default!;
         public byte[] PasswordHash { get; set; } = default!;
         public byte[] PasswordSalt { get; set; } = default!;
-        public virtual List<ShoppingCart> ShoppingCarts { get; set; } = default!;
+        public virtual List<Order> ShoppingCarts { get; set; } = default!;
     }
 }

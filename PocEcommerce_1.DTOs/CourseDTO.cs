@@ -1,6 +1,6 @@
-﻿namespace PocEcommerce_1.Entities
+﻿namespace PocEcommerce_1.DTOs
 {
-    public class Product : BaseEntity
+    public class CourseDTO : BaseDTO
     {
         public string Description { get; set; } = default!;
         public decimal Price { get; set; }

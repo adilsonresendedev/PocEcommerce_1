@@ -16,7 +16,7 @@ namespace PocEcommerce_1.API
             services.AddScoped<IAuthService, AuthSevice>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
-            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICoursetService, ProductService>();
             return services;
         }
 

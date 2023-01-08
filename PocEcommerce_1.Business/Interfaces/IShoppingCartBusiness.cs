@@ -6,7 +6,7 @@ namespace PocEcommerce_1.Business.Interfaces
     public  interface IShoppingCartBusiness
     {
         Task<int> Insert(ShoppingCartDTO shoppingCartDTO);
-        Task<bool> Delete(int id);
+        Task<bool> RemoveIten(ShoppingCartFilter shoppingCartFilter);
         Task<ShoppingCartDTO> GetById(int id);
         Task<List<ShoppingCartDTO>> GetAll(ShoppingCartFilter shoppingCartFilter);
     }

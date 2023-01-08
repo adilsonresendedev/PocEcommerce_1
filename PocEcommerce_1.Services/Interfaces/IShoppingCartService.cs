@@ -5,9 +5,9 @@ namespace PocEcommerce_1.Services.Interfaces
 {
     public interface IShoppingCartService
     {
-        Task<ServiceResponseViewModel<ShoppingCartViewModel>> Insert(ShoppingCartToInsertViewModel shoppingCartToInsertViewModel);
+        Task<ServiceResponseViewModel<ShoppingCartViewModel>> AddIten(ShoppingCartToInsertViewModel shoppingCartToInsertViewModel);
 
-        Task<ServiceResponseViewModel<ShoppingCartViewModel>> Delete(int id);
+        Task<ServiceResponseViewModel<ShoppingCartViewModel>> RemoveIten(ShoppingCartFilter shoppingCartFilter);
 
         Task<ServiceResponseViewModel<List<ShoppingCartViewModel>>> GetAll(ShoppingCartFilter shoppingCartFilter);
 

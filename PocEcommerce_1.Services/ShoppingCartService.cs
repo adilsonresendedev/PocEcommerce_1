@@ -22,12 +22,12 @@ namespace PocEcommerce_1.Services
             _mapper = mapper;
         }
 
-        public async Task<ServiceResponseViewModel<ShoppingCartViewModel>> Delete(int id)
+        public async Task<ServiceResponseViewModel<ShoppingCartViewModel>> RemoveIten(ShoppingCartFilter shoppingCartFilter)
         {
             ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = new ServiceResponseViewModel<ShoppingCartViewModel>();
             try
             {
-                ShoppingCartDTO shoppingCartDTO = await _shoppingCartBusiness.GetById(id);
+                ShoppingCartDTO shoppingCartDTO = await _shoppingCartBusiness.GetById(shoppingCartFilter.Id);
                 if (shoppingCartDTO is null)
                 {
                     serviceResponseViewModel.IsSucess = false;
@@ -35,7 +35,7 @@ namespace PocEcommerce_1.Services
                     return serviceResponseViewModel;
                 }
 
-                await _shoppingCartBusiness.Delete(id);
+                await _shoppingCartBusiness.RemoveIten(shoppingCartFilter);
                 await _unitOfWork.CommitAsync();
                 shoppingCartDTO.IsActive = false;
                 serviceResponseViewModel.Data = _mapper.Map<ShoppingCartViewModel>(shoppingCartDTO);
@@ -91,7 +91,7 @@ namespace PocEcommerce_1.Services
             return serviceResponseViewModel;
         }
 
-        public async Task<ServiceResponseViewModel<ShoppingCartViewModel>> Insert(ShoppingCartToInsertViewModel shoppingCartToInsertViewModel)
+        public async Task<ServiceResponseViewModel<ShoppingCartViewModel>> AddIten(ShoppingCartToInsertViewModel shoppingCartToInsertViewModel)
         {
             ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = new ServiceResponseViewModel<ShoppingCartViewModel>();
             try

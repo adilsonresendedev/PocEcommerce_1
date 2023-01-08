@@ -19,8 +19,8 @@ namespace PocEcommerce_1.Business
         }
         public async Task<bool> Delete(int id)
         {
-            Product product = await _productRepository.getById(id);
-            ProductDTO productDTO = new ProductDTO();
+            Course product = await _productRepository.getById(id);
+            CourseDTO productDTO = new CourseDTO();
 
             if (product != null)
             {
@@ -31,30 +31,30 @@ namespace PocEcommerce_1.Business
             return true;
         }
 
-        public async Task<List<ProductDTO>> GetAll(ProductFilter productFilter)
+        public async Task<List<CourseDTO>> GetAll(CourseFilter productFilter)
         {
-            List<Product> product = await _productRepository.GetAll(productFilter);
-            List<ProductDTO> productDTO = _mapper.Map<List<ProductDTO>>(product);
+            List<Course> product = await _productRepository.GetAll(productFilter);
+            List<CourseDTO> productDTO = _mapper.Map<List<CourseDTO>>(product);
             return productDTO;
         }
 
-        public async Task<ProductDTO> GetById(int id)
+        public async Task<CourseDTO> GetById(int id)
         {
-            Product product = await _productRepository.getById(id);
-            ProductDTO productDTO = _mapper.Map<ProductDTO>(product);
+            Course product = await _productRepository.getById(id);
+            CourseDTO productDTO = _mapper.Map<CourseDTO>(product);
             return productDTO;
         }
 
-        public async Task<int> Insert(ProductDTO productDTO)
+        public async Task<int> Insert(CourseDTO productDTO)
         {
-            Product product = _mapper.Map<Product>(productDTO);
+            Course product = _mapper.Map<Course>(productDTO);
             await _productRepository.Insert(product);
             return product.Id;
         }
 
-        public async Task<bool> Update(ProductDTO productDTO)
+        public async Task<bool> Update(CourseDTO productDTO)
         {
-            Product product = _mapper.Map<Product>(productDTO);
+            Course product = _mapper.Map<Course>(productDTO);
             await _productRepository.Update(product);
             return true;
         }

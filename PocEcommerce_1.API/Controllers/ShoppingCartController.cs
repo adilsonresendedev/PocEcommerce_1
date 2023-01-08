@@ -12,16 +12,16 @@ namespace PocEcommerce_1.API.Controllers
     {
         private IShoppingCartService _shoppingCartService;
 
-        public ShoppingCartController( IShoppingCartService shoppingCartService)
+        public ShoppingCartController(IShoppingCartService shoppingCartService)
         {
             _shoppingCartService = shoppingCartService;
         }
 
         [HttpPost]
-        [Route(nameof(Insert))]
-        public async Task<IActionResult> Insert([FromBody] ShoppingCartToInsertViewModel shoppingCartToInsertViewModel)
+        [Route(nameof(AddIten))]
+        public async Task<IActionResult> AddIten([FromBody] ShoppingCartToInsertViewModel shoppingCartToInsertViewModel)
         {
-            ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = await _shoppingCartService.Insert(shoppingCartToInsertViewModel);
+            ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = await _shoppingCartService.AddIten(shoppingCartToInsertViewModel);
             return Ok(serviceResponseViewModel);
         }
 
@@ -42,10 +42,10 @@ namespace PocEcommerce_1.API.Controllers
         }
 
         [HttpDelete]
-        [Route(nameof(GetById) + "/{id:int}")]
-        public async Task<IActionResult> Delete(int id)
+        [Route(nameof(RemoveIten) + "/{id:int}")]
+        public async Task<IActionResult> RemoveIten(ShoppingCartFilter shoppingCartFilter)
         {
-            ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = await _shoppingCartService.Delete(id);
+            ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = await _shoppingCartService.RemoveIten(shoppingCartFilter);
             return Ok(serviceResponseViewModel);
         }
 

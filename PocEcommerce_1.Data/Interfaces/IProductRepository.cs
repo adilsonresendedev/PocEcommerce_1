@@ -5,9 +5,9 @@ namespace PocEcommerce_1.Data.Interfaces
 {
     public interface IProductRepository
     {
-        Task<Product> getById(int id);
-        Task<List<Product>> GetAll(ProductFilter productFilter);
-        Task<Product> Update(Product product);
-        Task<Product> Insert(Product product);
+        Task<Course> getById(int id);
+        Task<List<Course>> GetAll(CourseFilter productFilter);
+        Task<Course> Update(Course product);
+        Task<Course> Insert(Course product);
     }
 }
