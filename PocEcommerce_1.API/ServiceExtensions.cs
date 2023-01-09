@@ -23,7 +23,7 @@ namespace PocEcommerce_1.API
         public static IServiceCollection AddBusiness(this IServiceCollection services)
         {
             services.AddScoped<IUserBusiness, UserBusiness>();
-            services.AddScoped<IShoppingCartBusiness, ShoppingCartBusiness>();
+            services.AddScoped<IOrderBusiness, ShoppingCartBusiness>();
             services.AddScoped<IProductBusiness, ProductBusiness>();
             return services;
         }
@@ -31,7 +31,7 @@ namespace PocEcommerce_1.API
         public static IServiceCollection AddRepository(this IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+            services.AddScoped<IOrderRepository, ShoppingCartRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             return services;
         }

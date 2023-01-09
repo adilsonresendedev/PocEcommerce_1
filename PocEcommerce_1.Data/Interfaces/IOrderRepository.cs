@@ -3,10 +3,10 @@ using PocEcommerce_1.Shared.Filters;
 
 namespace PocEcommerce_1.Data.Interfaces
 {
-    public interface IShoppingCartRepository
+    public interface IOrderRepository
     {
         Task<bool> Update(Order shoppingCart);
-        Task<List<Order>> GetAll(ShoppingCartFilter shoppingCartFilter);
+        Task<List<Order>> GetAll(OrderFilter shoppingCartFilter);
         Task<Order> GetById(int id);
         Task<int> Insert(Order shoppingCart);
     }

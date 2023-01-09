@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PocEcommerce_1.Data.Repositories
 {
-    public class ShoppingCartRepository : IShoppingCartRepository
+    public class ShoppingCartRepository : IOrderRepository
     {
         private readonly AppDbContext _appDbContext;
         public ShoppingCartRepository(AppDbContext appDbContext)
@@ -25,7 +25,7 @@ namespace PocEcommerce_1.Data.Repositories
             return await _appDbContext.SaveChangesAsync() == 1;
         }
 
-        public async Task<List<Order>> GetAll(ShoppingCartFilter shoppingCartFilter)
+        public async Task<List<Order>> GetAll(OrderFilter shoppingCartFilter)
         {
             IQueryable<Order> ShoppingCart = _appDbContext.Set<Order>()
                 .Where(x => shoppingCartFilter.Id != 0 ? x.Id == shoppingCartFilter.Id : true)

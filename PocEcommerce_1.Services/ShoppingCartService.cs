@@ -11,34 +11,34 @@ namespace PocEcommerce_1.Services
 {
     public class ShoppingCartService : IShoppingCartService
     {
-        private readonly IShoppingCartBusiness _shoppingCartBusiness;
+        private readonly IOrderBusiness _orderBusiness;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public ShoppingCartService(IShoppingCartBusiness shoppingCartBusiness, IUnitOfWork unitOfWork, IMapper mapper)
+        public ShoppingCartService(IOrderBusiness OrderBusiness, IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _shoppingCartBusiness = shoppingCartBusiness;
+            _orderBusiness = OrderBusiness;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public async Task<ServiceResponseViewModel<ShoppingCartViewModel>> RemoveIten(ShoppingCartFilter shoppingCartFilter)
+        public async Task<ServiceResponseViewModel<OrderViewModel>> Delete(int  id)
         {
-            ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = new ServiceResponseViewModel<ShoppingCartViewModel>();
+            ServiceResponseViewModel<OrderViewModel> serviceResponseViewModel = new ServiceResponseViewModel<OrderViewModel>();
             try
             {
-                ShoppingCartDTO shoppingCartDTO = await _shoppingCartBusiness.GetById(shoppingCartFilter.Id);
-                if (shoppingCartDTO is null)
+                OrderDTO orderDTO = await _orderBusiness.GetById(id);
+                if (orderDTO is null)
                 {
                     serviceResponseViewModel.IsSucess = false;
                     serviceResponseViewModel.Message = ConstantMessages.RegisterNotFount;
                     return serviceResponseViewModel;
                 }
 
-                await _shoppingCartBusiness.RemoveIten(shoppingCartFilter);
+                await _orderBusiness.Delete(id);
                 await _unitOfWork.CommitAsync();
-                shoppingCartDTO.IsActive = false;
-                serviceResponseViewModel.Data = _mapper.Map<ShoppingCartViewModel>(shoppingCartDTO);
+                orderDTO.IsActive = false;
+                serviceResponseViewModel.Data = _mapper.Map<OrderViewModel>(orderDTO);
                 return serviceResponseViewModel;
             }
             catch (Exception ex)
@@ -51,14 +51,14 @@ namespace PocEcommerce_1.Services
             return serviceResponseViewModel;
         }
 
-        public async Task<ServiceResponseViewModel<List<ShoppingCartViewModel>>> GetAll(ShoppingCartFilter shoppingCartFilter)
+        public async Task<ServiceResponseViewModel<List<OrderViewModel>>> GetAll(OrderFilter orderFilter)
         {
-            ServiceResponseViewModel<List<ShoppingCartViewModel>> serviceResponseViewModel = new ServiceResponseViewModel<List<ShoppingCartViewModel>>();
+            ServiceResponseViewModel<List<OrderViewModel>> serviceResponseViewModel = new ServiceResponseViewModel<List<OrderViewModel>>();
             try
             {
-                List<ShoppingCartDTO> shoppingCartDTO = await _shoppingCartBusiness.GetAll(shoppingCartFilter);
-                List<ShoppingCartViewModel> shoppingCartViewModel = _mapper.Map<List<ShoppingCartViewModel>>(shoppingCartDTO);
-                serviceResponseViewModel.Data = shoppingCartViewModel;
+                List<OrderDTO> orderDTO = await _orderBusiness.GetAll(orderFilter);
+                List<OrderViewModel> OrderViewModel = _mapper.Map<List<OrderViewModel>>(orderDTO);
+                serviceResponseViewModel.Data = OrderViewModel;
                 return serviceResponseViewModel;
             }
             catch (Exception ex)
@@ -71,14 +71,14 @@ namespace PocEcommerce_1.Services
             return serviceResponseViewModel;
         }
 
-        public async Task<ServiceResponseViewModel<ShoppingCartViewModel>> GetById(int id)
+        public async Task<ServiceResponseViewModel<OrderViewModel>> GetById(int id)
         {
-            ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = new ServiceResponseViewModel<ShoppingCartViewModel>();
+            ServiceResponseViewModel<OrderViewModel> serviceResponseViewModel = new ServiceResponseViewModel<OrderViewModel>();
             try
             {
-                ShoppingCartDTO shoppingCartDTO = await _shoppingCartBusiness.GetById(id);
-                ShoppingCartViewModel shoppingCartViewModel = _mapper.Map<ShoppingCartViewModel>(shoppingCartDTO);
-                serviceResponseViewModel.Data = shoppingCartViewModel;
+                OrderDTO OrderDTO = await _orderBusiness.GetById(id);
+                OrderViewModel OrderViewModel = _mapper.Map<OrderViewModel>(OrderDTO);
+                serviceResponseViewModel.Data = OrderViewModel;
                 return serviceResponseViewModel;
             }
             catch (Exception ex)
@@ -91,16 +91,16 @@ namespace PocEcommerce_1.Services
             return serviceResponseViewModel;
         }
 
-        public async Task<ServiceResponseViewModel<ShoppingCartViewModel>> AddIten(ShoppingCartToInsertViewModel shoppingCartToInsertViewModel)
+        public async Task<ServiceResponseViewModel<OrderViewModel>> Insert(OrderToInsertViewModel OrderToInsertViewModel)
         {
-            ServiceResponseViewModel<ShoppingCartViewModel> serviceResponseViewModel = new ServiceResponseViewModel<ShoppingCartViewModel>();
+            ServiceResponseViewModel<OrderViewModel> serviceResponseViewModel = new ServiceResponseViewModel<OrderViewModel>();
             try
             {
-                ShoppingCartDTO shoppingCartDTO = _mapper.Map<ShoppingCartDTO>(shoppingCartToInsertViewModel);
-                shoppingCartDTO.Id = await _shoppingCartBusiness.Insert(shoppingCartDTO);
+                OrderDTO OrderDTO = _mapper.Map<OrderDTO>(OrderToInsertViewModel);
+                OrderDTO.Id = await _orderBusiness.Insert(OrderDTO);
                 await _unitOfWork.CommitAsync();
-                ShoppingCartViewModel shoppingCartViewModel = _mapper.Map<ShoppingCartViewModel>(shoppingCartDTO);
-                serviceResponseViewModel.Data = shoppingCartViewModel;
+                OrderViewModel orderViewModel = _mapper.Map<OrderViewModel>(OrderDTO);
+                serviceResponseViewModel.Data = orderViewModel;
                 return serviceResponseViewModel;
             }
             catch (Exception ex)

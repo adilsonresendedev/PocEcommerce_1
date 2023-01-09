@@ -7,40 +7,50 @@ using PocEcommerce_1.Shared.Filters;
 
 namespace PocEcommerce_1.Business
 {
-    public class ShoppingCartBusiness : IShoppingCartBusiness
+    public class ShoppingCartBusiness : IOrderBusiness
     {
-        private readonly IShoppingCartRepository _shoppingCartRepository;
+        private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
 
-        public ShoppingCartBusiness(IShoppingCartRepository shoppingCartRepository, IMapper mapper)
+        public ShoppingCartBusiness(IOrderRepository orderRepository, IMapper mapper)
         {
-            _shoppingCartRepository = shoppingCartRepository;
+            _orderRepository = orderRepository;
             _mapper = mapper;
         }
 
-        public async Task<bool> RemoveIten(int id)
+        public async Task<bool> Delete(int id)
         {
-            return await _shoppingCartRepository.Delete(id);
+            Order order = await _orderRepository.GetById(id);
+            if(order != null)
+            {
+                order.IsActive = false;
+                await _orderRepository.Update(order);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public async Task<List<ShoppingCartDTO>> GetAll(ShoppingCartFilter shoppingCartFilter)
+        public async Task<List<OrderDTO>> GetAll(OrderFilter orderFilter)
         {
-            List<Order> shoppingCart = await _shoppingCartRepository.GetAll(shoppingCartFilter);
-            List<ShoppingCartDTO> shoppingCartDTO = _mapper.Map<List<ShoppingCartDTO>>(shoppingCart);
-            return shoppingCartDTO;
+            List<Order> order = await _orderRepository.GetAll(orderFilter);
+            List<OrderDTO> orderDTO = _mapper.Map<List<OrderDTO>>(order);
+            return orderDTO;
         }
 
-        public async Task<ShoppingCartDTO> GetById(int id)
+        public async Task<OrderDTO> GetById(int id)
         {
-            Order shoppingCart = await _shoppingCartRepository.GetById(id);
-            ShoppingCartDTO shoppingCartDTO = _mapper.Map<ShoppingCartDTO>(shoppingCart);
-            return shoppingCartDTO;
+            Order order = await _orderRepository.GetById(id);
+            OrderDTO orderDTO = _mapper.Map<OrderDTO>(order);
+            return orderDTO;
         }
 
-        public async Task<int> Insert(ShoppingCartDTO shoppingCartDTO)
+        public async Task<int> Insert(OrderDTO orderDTO)
         {
-            Order shoppingCart = _mapper.Map<Order>(shoppingCartDTO);
-            int IdInserted = await _shoppingCartRepository.Insert(shoppingCart);
+            Order order = _mapper.Map<Order>(orderDTO);
+            int IdInserted = await _orderRepository.Insert(order);
             return IdInserted;
         }
     }

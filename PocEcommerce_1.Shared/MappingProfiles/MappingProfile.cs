@@ -21,11 +21,13 @@ namespace PocEcommerce_1.Shared.MappingProfiles
 
             CreateMap<CourseDTO, Course>().ReverseMap();
 
-            CreateMap<ShoppingCartToInsertViewModel, ShoppingCartDTO>().ReverseMap();
+            CreateMap<OrderToInsertViewModel, OrderDTO>()
+                .ForMember(dest => dest.CourseDTO, src => src.MapFrom(opt => opt.CourseViewModel));
 
-            CreateMap<ShoppingCartViewModel, ShoppingCartDTO>().ReverseMap();
+            CreateMap<OrderViewModel, OrderDTO>()
+                .ForMember(dest => dest.CourseDTO, src => src.MapFrom(opt => opt.CourseViewModel));
 
-            CreateMap<ShoppingCartDTO, Order>().ReverseMap();
+            CreateMap<OrderDTO, Order>().ReverseMap();
         }
     }
 }
