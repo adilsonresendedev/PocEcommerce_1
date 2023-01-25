@@ -2,7 +2,7 @@
 
 namespace PocEcommerce_1.Data.UnitOfWork
 {
-    internal class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly AppDbContext _appDbContext;
 

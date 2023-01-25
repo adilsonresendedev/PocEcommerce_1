@@ -9,6 +9,7 @@ namespace PocEcommerce_1.Data.EntityConfiguration
         public void Configure(EntityTypeBuilder<Course> builder)
         {
             builder.HasKey(x => x.Id);
+            builder.Property(x => x.Price).HasColumnType("decimal(18, 3)");
         }
     }
 }

@@ -4,6 +4,7 @@ using PocEcommerce_1.Business.Interfaces;
 using PocEcommerce_1.Data.Context;
 using PocEcommerce_1.Data.Interfaces;
 using PocEcommerce_1.Data.Repositories;
+using PocEcommerce_1.Data.UnitOfWork;
 using PocEcommerce_1.Services;
 using PocEcommerce_1.Services.Interfaces;
 
@@ -33,6 +34,12 @@ namespace PocEcommerce_1.API
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IOrderRepository, ShoppingCartRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            return services;
+        }
+
+        public static IServiceCollection AddUnitOfWork(this IServiceCollection services)
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
 

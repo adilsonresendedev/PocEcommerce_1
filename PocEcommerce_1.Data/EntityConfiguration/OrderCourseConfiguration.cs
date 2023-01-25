@@ -19,6 +19,8 @@ namespace PocEcommerce_1.Data.EntityConfiguration
                 .WithMany(x => x.OrderCourse)
                 .HasForeignKey(x => x.IdOrder)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Property(x => x.Price).HasColumnType("decimal(18, 3)");
         }
     }
 }
