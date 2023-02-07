@@ -1,4 +1,5 @@
 using PocEcommerce_1.API;
+using PocEcommerce_1.Shared.MappingProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,7 @@ builder.Services.AddBusiness();
 builder.Services.AddRepository();
 builder.Services.AddUnitOfWork();
 builder.Services.AddDatabase(builder.Configuration);
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 

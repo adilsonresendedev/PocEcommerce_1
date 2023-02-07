@@ -1,4 +1,6 @@
-﻿using PocEcommerce_1.Data.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using PocEcommerce_1.Data.Context;
+using PocEcommerce_1.Data.Interfaces;
 using PocEcommerce_1.Entities;
 
 
@@ -6,19 +8,32 @@ namespace PocEcommerce_1.Data.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public Task<User> GetByEmail(string email)
+        private readonly AppDbContext _appDbContext;
+
+        public UserRepository(AppDbContext appDbContext)
         {
-            throw new NotImplementedException();
+            _appDbContext = appDbContext;
         }
 
-        public Task<int> Insert(User user)
+        public async Task<User> GetByEmail(string email)
         {
-            throw new NotImplementedException();
+            User user = await  _appDbContext.Set<User>().FirstOrDefaultAsync(x => x.Email == email);
+            return user;
         }
 
-        public Task<User> Update(User user)
+        public async Task<int> Insert(User user)
         {
-            throw new NotImplementedException();
+            await _appDbContext.Set<User>().AddAsync(user);
+            await _appDbContext.SaveChangesAsync();
+            return user.Id;
+        }
+
+        public async Task<User> Update(User user)
+        {
+            _appDbContext.Set<User>().Update(user);
+            await _appDbContext.SaveChangesAsync();
+            User updatedUser = await _appDbContext.Set<User>().FirstOrDefaultAsync(x => x.Id == user.Id);
+            return updatedUser;
         }
     }
 }

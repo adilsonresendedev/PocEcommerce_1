@@ -15,6 +15,7 @@ namespace PocEcommerce_1.API.Controllers
         }
 
         [HttpPost]
+        [Route(nameof(Register))]
         public async Task<IActionResult> Register([FromBody] UserToInsertViewModel userToInsertViewModel)
         {
             ServiceResponseViewModel<UserViewModel> serviceResponseDTO = await _authService.Register(userToInsertViewModel);
@@ -22,6 +23,7 @@ namespace PocEcommerce_1.API.Controllers
         }
 
         [HttpGet]
+        [Route(nameof(Login))]
         public async Task<IActionResult> Login([FromQuery] UserViewModel userLoginViewModel)
         {
             ServiceResponseViewModel<string> serviceResponseDTO = await _authService.Login(userLoginViewModel);

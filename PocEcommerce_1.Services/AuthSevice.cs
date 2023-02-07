@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using PocEcommerce_1.Business.Interfaces;
+using PocEcommerce_1.Data.UnitOfWork;
 using PocEcommerce_1.DTOs;
 using PocEcommerce_1.Services.Interfaces;
 using PocEcommerce_1.Shared.Messages;
@@ -18,11 +19,13 @@ namespace PocEcommerce_1.Services
         private readonly IUserBusiness _userBusiness;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public AuthSevice(IUserBusiness userBusiness, IConfiguration configuration, IMapper mapper)
+        public AuthSevice(IUserBusiness userBusiness, IConfiguration configuration, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _userBusiness = userBusiness;
             _configuration = configuration;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
@@ -63,7 +66,7 @@ namespace PocEcommerce_1.Services
             try
             {
                 UserDTO userOnDatabase = await _userBusiness.GetByEmail(userToInsertViewModel.Email);
-                if (userOnDatabase.Id != 0)
+                if (userOnDatabase != null)
                 {
                     serviceResponseDTO.IsSucess = false;
                     serviceResponseDTO.Message = ConstantMessages.UserAlreadyExists;
@@ -75,12 +78,14 @@ namespace PocEcommerce_1.Services
                 userDTO.PasswordHash = passwordHash;
                 userDTO.PasswordSalt = passwordSalt;
                 userDTO.Id = await _userBusiness.Insert(userDTO);
+                await _unitOfWork.CommitAsync();
                 serviceResponseDTO.Data = _mapper.Map<UserViewModel>(userDTO);
             }
             catch (Exception ex)
             {
                 serviceResponseDTO.IsSucess = false;
                 serviceResponseDTO.Message = ex.GetBaseException().Message;
+                await _unitOfWork.RollbackAscync();
             }
 
             return serviceResponseDTO;
