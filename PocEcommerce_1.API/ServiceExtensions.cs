@@ -7,6 +7,7 @@ using PocEcommerce_1.Data.Repositories;
 using PocEcommerce_1.Data.UnitOfWork;
 using PocEcommerce_1.Services;
 using PocEcommerce_1.Services.Interfaces;
+using System.Runtime.CompilerServices;
 
 namespace PocEcommerce_1.API
 {
@@ -46,7 +47,17 @@ namespace PocEcommerce_1.API
         public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(x => x.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
             return services;
+        }
+
+        public static void CreateDatabaseIfNotExists(this WebApplication webApplication)
+        {
+            using (IServiceScope _serviceScope = webApplication.Services.CreateScope())
+            {
+                AppDbContext _appDbContext = _serviceScope.ServiceProvider.GetRequiredService<AppDbContext>();
+                _appDbContext.Database.EnsureCreated();
+            }
         }
     }
 }

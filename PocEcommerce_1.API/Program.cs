@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using PocEcommerce_1.API;
 using PocEcommerce_1.Shared.MappingProfiles;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +18,20 @@ builder.Services.AddRepository();
 builder.Services.AddUnitOfWork();
 builder.Services.AddDatabase(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
+            .GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 var app = builder.Build();
+app.CreateDatabaseIfNotExists();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
